@@ -36,7 +36,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# yarn berry, zero install
+# yarn berry non zero install
 .pnp.*
 .yarn/*
 !.yarn/patches
