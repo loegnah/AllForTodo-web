@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 function SquareButtonA() {
   return <Button>Hi</Button>;

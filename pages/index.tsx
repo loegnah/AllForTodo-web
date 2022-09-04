@@ -1,4 +1,4 @@
-import SquareButtonA from "../components/buttons/SquareButtonA";
+import SquareButtonA from '../components/buttons/SquareButtonA';
 
 function Home() {
   return (
