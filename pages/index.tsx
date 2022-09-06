@@ -4,6 +4,9 @@ function Home() {
   return (
     <div>
       <SquareButtonA />
+      <div>
+        <span>abc</span>
+      </div>
     </div>
   );
 }
