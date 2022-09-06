@@ -1,3 +1,4 @@
+import 'normalize.css';
 import type { AppProps } from 'next/app';
 import { Global } from '@emotion/react';
 import GlobalStyle from '/styles/GlobalStyle';
