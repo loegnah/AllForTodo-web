@@ -3,10 +3,17 @@ import { css } from '@emotion/react';
 const GlobalStyle = css`
   html,
   body {
-    padding: 50px;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
       Helvetica Neue, sans-serif;
+  }
+
+  div,
+  main,
+  section,
+  article {
+    display: flex;
+    flex-direction: column;
   }
 
   a {
