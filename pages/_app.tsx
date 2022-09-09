@@ -8,9 +8,13 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Global styles={GlobalStyle} />
-      <RootLayout>
+      {!pageProps.errorPage ? (
+        <RootLayout>
+          <Component {...pageProps} />
+        </RootLayout>
+      ) : (
         <Component {...pageProps} />
-      </RootLayout>
+      )}
     </>
   );
 }
