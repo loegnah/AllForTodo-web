@@ -3,10 +3,10 @@ import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
 import RootNavBar from '/components/navBars/RootNavBar';
 
-const RootLayout: NextPage<Props> = ({ children }) => {
+const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (
     <RootDiv>
-      <RootNavBar />
+      {!minimalMode && <RootNavBar />}
       {children}
     </RootDiv>
   );
@@ -14,10 +14,11 @@ const RootLayout: NextPage<Props> = ({ children }) => {
 
 interface Props {
   children: ReactNode;
+  minimalMode: boolean;
 }
 
 const RootDiv = styled.div`
-  background-color: aquamarine;
+  background-color: ${(props) => props.theme.color.bg};
   flex-direction: row;
   position: absolute;
   width: 100%;

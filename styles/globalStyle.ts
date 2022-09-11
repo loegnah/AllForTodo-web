@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-const GlobalStyle = css`
+const globalStyle = css`
   html,
   body {
     margin: 0;
@@ -36,4 +36,4 @@ const GlobalStyle = css`
   }
 `;
 
-export default GlobalStyle;
+export default globalStyle;
