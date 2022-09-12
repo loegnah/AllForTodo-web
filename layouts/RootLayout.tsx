@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
 import RootNavBar from '/components/navBars/RootNavBar';
+import { getColor } from '../libs/cssLibs';
 
 const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (
@@ -18,7 +19,7 @@ interface Props {
 }
 
 const RootDiv = styled.div`
-  background-color: ${(props) => props.theme.color.bg};
+  background-color: ${getColor('bg')};
   flex-direction: row;
   position: absolute;
   width: 100%;
