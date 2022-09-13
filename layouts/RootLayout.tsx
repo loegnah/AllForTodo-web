@@ -2,11 +2,12 @@ import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
 import RootNavBar from '/components/navBars/RootNavBar';
+import { getColor } from '../libs/cssLibs';
 
-const RootLayout: NextPage<Props> = ({ children }) => {
+const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (
     <RootDiv>
-      <RootNavBar />
+      {!minimalMode && <RootNavBar />}
       {children}
     </RootDiv>
   );
@@ -14,10 +15,11 @@ const RootLayout: NextPage<Props> = ({ children }) => {
 
 interface Props {
   children: ReactNode;
+  minimalMode: boolean;
 }
 
 const RootDiv = styled.div`
-  background-color: aquamarine;
+  background-color: ${getColor('bg')};
   flex-direction: row;
   position: absolute;
   width: 100%;

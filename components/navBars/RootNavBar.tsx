@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import SquareIconButton from '/components/buttons/SquareIconButton';
+import { getColor } from '../../libs/cssLibs';
 
 // FIXME : call api for getting user selected buttons
 const userSelectedButtonNames = ['calendar', 'calendar'];
@@ -17,8 +18,8 @@ function RootNavBar() {
 }
 
 const Bar = styled.section`
-  background-color: rosybrown;
-  width: 60px;
+  background-color: ${getColor('bgSub')};
+  width: 50px;
   padding-top: 5px;
   align-items: center;
   gap: 5px;
