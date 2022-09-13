@@ -1,17 +1,16 @@
-import 'normalize.css';
 import type { AppProps } from 'next/app';
-import { Global, ThemeProvider } from '@emotion/react';
-import globalStyle from '/styles/globalStyle';
+import { ThemeProvider } from '@emotion/react';
 import RootLayout from '/layouts/RootLayout';
-import { getColorTheme } from '/styles/colorTheme';
+import { getColorTheme } from '/styles/themes/colorTheme';
+import GlobalStyle from '/styles/globalStyle';
 
 function App({ Component, pageProps }: AppProps) {
   const minimalMode = pageProps.errorPage;
 
   return (
     <>
-      <Global styles={globalStyle} />
       <ThemeProvider theme={{ color: getColorTheme('default') }}>
+        <GlobalStyle />
         <RootLayout minimalMode={minimalMode}>
           <Component {...pageProps} />
         </RootLayout>
