@@ -5,6 +5,16 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/calendar',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

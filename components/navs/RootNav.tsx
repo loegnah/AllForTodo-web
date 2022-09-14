@@ -5,7 +5,7 @@ import { getColor } from '../../libs/cssLibs';
 // FIXME : call api for getting user selected buttons
 const userSelectedButtonNames = ['calendar', 'calendar'];
 
-function RootNavBar() {
+function RootNav() {
   return (
     <Bar>
       {userSelectedButtonNames.map((name, i) => (
@@ -23,12 +23,14 @@ const Bar = styled.section`
   padding-top: 5px;
   align-items: center;
   gap: 5px;
+  border-right: solid 1px ${getColor('line')};
 `;
 
 const IconContainer = styled.div`
   width: 100%;
   align-items: center;
   padding: 5px 0;
+  opacity: 80%;
 `;
 
-export default RootNavBar;
+export default RootNav;

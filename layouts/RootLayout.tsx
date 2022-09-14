@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
-import RootNavBar from '/components/navBars/RootNavBar';
+import RootNav from '/components/navs/RootNav';
 import { getColor } from '../libs/cssLibs';
 
 const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (
     <RootDiv>
-      {!minimalMode && <RootNavBar />}
+      {!minimalMode && <RootNav />}
       {children}
     </RootDiv>
   );
