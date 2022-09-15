@@ -5,7 +5,6 @@ function CalendarHeader() {
 }
 
 const Wrapper = styled.header`
-  background-color: #ffeeff;
   height: 80px;
 `;
 

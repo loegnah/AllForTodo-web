@@ -9,7 +9,8 @@ const colorThemes: { [key in ColorThemeName]: Theme['color'] } = {
     bgSub: rgba(71, 114, 250, 0.08),
     line: rgba(25, 25, 25, 0.05),
     lineSub: '#9a8c98',
-    font: '#22223b',
+    font: rgba(34, 34, 34, 0.8),
+    fontLight: rgba(34, 34, 34, 0.7),
   },
 
   test: {

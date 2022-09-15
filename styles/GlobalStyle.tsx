@@ -6,7 +6,6 @@ function GlobalStyle() {
     <Global
       styles={css`
         * {
-          color: ${theme.color.font};
           box-sizing: border-box;
         }
 
@@ -31,15 +30,15 @@ function GlobalStyle() {
           text-decoration: none;
         }
 
-        @media (prefers-color-scheme: dark) {
-          html {
-            color-scheme: dark;
-          }
-          body {
-            color: white;
-            background: black;
-          }
-        }
+        //@media (prefers-color-scheme: dark) {
+        //  html {
+        //    color-scheme: dark;
+        //  }
+        //  body {
+        //    color: white;
+        //    background: black;
+        //  }
+        //}
       `}
     />
   );

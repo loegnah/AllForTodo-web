@@ -8,6 +8,7 @@ declare module '@emotion/react' {
       line: string;
       lineSub?: string;
       font: string;
+      fontLight?: string;
     };
   }
 }
