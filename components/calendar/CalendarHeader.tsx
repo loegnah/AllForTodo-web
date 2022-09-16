@@ -5,7 +5,7 @@ function CalendarHeader() {
 }
 
 const Wrapper = styled.header`
-  height: 80px;
+  height: 60px;
 `;
 
 export default CalendarHeader;

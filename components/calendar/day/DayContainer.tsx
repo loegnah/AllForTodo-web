@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { getColor } from '/libs/cssLibs';
 import { range } from 'lodash';
-import Day from './Day';
+import DayItem from './DayItem';
 
 type Props = {};
 
@@ -9,7 +9,7 @@ function DayContainer({}: Props) {
   return (
     <Container>
       {range(1, 31).map((day) => (
-        <Day day={day} key={day} />
+        <DayItem day={day} key={day} />
       ))}
     </Container>
   );
