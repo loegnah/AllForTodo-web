@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
 import RootNav from '/components/navs/RootNav';
-import { getColor } from '../libs/cssLibs';
+import { getColor } from '/libs/cssLib';
 
 const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import SquareIconButton from '/components/buttons/SquareIconButton';
-import { getColor } from '../../libs/cssLibs';
+import { getColor } from '/libs/cssLib';
 
 // FIXME : call api for getting user selected buttons
 const userSelectedButtonNames = ['calendar', 'calendar'];

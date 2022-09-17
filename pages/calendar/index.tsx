@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import CalendarHeader from '/components/calendar/CalendarHeader';
 import CalendarSection from '/components/calendar/CalendarSection';
-import { getColor } from '/libs/cssLibs';
+import { getColor } from '/libs/cssLib';
 
 function Calendar() {
   return (

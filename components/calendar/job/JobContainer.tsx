@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import JobItem from './JobItem';
-import type { Job } from '/libs/job/jobManager';
+import type { Job } from '../../../modules/jobManager';
 
 type Props = {};
 

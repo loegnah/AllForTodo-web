@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { getColor } from '/libs/cssLibs';
+import { getColor } from '/libs/cssLib';
 import { range } from 'lodash';
 import DayItem from './DayItem';
 

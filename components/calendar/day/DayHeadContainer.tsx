@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { getColor } from '/libs/cssLibs';
-import { dayNames } from '/libs/days';
+import { getColor } from '/libs/cssLib';
+import { dayNames } from '/libs/dateLib';
 
 type Props = {};
 
