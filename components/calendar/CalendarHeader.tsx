@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 
 function CalendarHeader() {
-  return <Wrapper></Wrapper>;
+  return <CalendarHeaderLayout></CalendarHeaderLayout>;
 }
 
-const Wrapper = styled.header`
+const CalendarHeaderLayout = styled.header`
   height: 60px;
 `;
 

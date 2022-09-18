@@ -6,16 +6,16 @@ type Props = {
   day: number;
 };
 
-function DayItem({ day }: Props) {
+function Day({ day }: Props) {
   return (
-    <Item>
+    <DayLayout>
       <DateText>{day}</DateText>
       <JobContainer />
-    </Item>
+    </DayLayout>
   );
 }
 
-const Item = styled.div`
+const DayLayout = styled.div`
   padding: 8px;
   border-left: solid 1px ${getColor('line')};
   border-bottom: solid 1px ${getColor('line')};
@@ -23,4 +23,4 @@ const Item = styled.div`
 
 const DateText = styled.div``;
 
-export default DayItem;
+export default Day;

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import type { Job } from '../../../modules/jobManager';
-import { getCategoryColor } from '../../../modules/categoryManager';
+import type { Job } from '../../../controllers/jobManager';
+import { getCategoryColor } from '../../../controllers/categoryManager';
 
 type JobItemProps = {
   job: Job;

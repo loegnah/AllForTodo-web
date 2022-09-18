@@ -7,17 +7,17 @@ const userSelectedButtonNames = ['calendar', 'calendar'];
 
 function RootNav() {
   return (
-    <Bar>
+    <RootNavLayout>
       {userSelectedButtonNames.map((name, i) => (
-        <IconContainer key={i}>
+        <IconSection key={i}>
           <SquareIconButton />
-        </IconContainer>
+        </IconSection>
       ))}
-    </Bar>
+    </RootNavLayout>
   );
 }
 
-const Bar = styled.section`
+const RootNavLayout = styled.section`
   background-color: ${getColor('bgSub')};
   width: 50px;
   padding-top: 5px;
@@ -26,7 +26,7 @@ const Bar = styled.section`
   border-right: solid 1px ${getColor('line')};
 `;
 
-const IconContainer = styled.div`
+const IconSection = styled.section`
   width: 100%;
   align-items: center;
   padding: 5px 0;
