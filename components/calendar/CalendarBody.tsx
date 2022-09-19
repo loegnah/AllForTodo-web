@@ -4,8 +4,18 @@ import { getColor } from '/libs/cssLib';
 import { range } from 'lodash';
 import Day from './day/Day';
 import { dayNames } from '/libs/dateLib';
+import { useRecoilValue } from 'recoil';
+import { jobAtoms, jobSelector } from '../../controllers/jobManager';
 
-function CalendarBody() {
+type Props = {
+  year: number;
+  month: number;
+};
+
+function CalendarBody({ year, month }: Props) {
+  const jobs = useRecoilValue(jobSelector({ year, month }));
+  console.log(jobs);
+
   return (
     <CalendarBodyLayout>
       <DayHeadSection>
