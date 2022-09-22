@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import CalendarHeader from '/components/calendar/CalendarHeader';
-import CalendarSection from '/components/calendar/CalendarSection';
-import { getColor } from '/libs/cssLibs';
+import CalendarBody from '/components/calendar/CalendarBody';
+import { getColor } from '/libs/cssLib';
 
 function Calendar() {
   return (
     <Wrapper>
       <CalendarHeader />
-      <CalendarSection />
+      <CalendarBody year={2022} month={12} />
     </Wrapper>
   );
 }

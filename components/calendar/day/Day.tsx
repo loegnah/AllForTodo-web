@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { getColor } from '/libs/cssLibs';
+import { getColor } from '/libs/cssLib';
+import JobContainer from '../job/JobContainer';
 
 type Props = {
   day: number;
@@ -7,16 +8,19 @@ type Props = {
 
 function Day({ day }: Props) {
   return (
-    <Wrapper>
-      <span>{day}</span>
-    </Wrapper>
+    <DayLayout>
+      <DateText>{day}</DateText>
+      <JobContainer />
+    </DayLayout>
   );
 }
 
-const Wrapper = styled.div`
+const DayLayout = styled.div`
   padding: 8px;
   border-left: solid 1px ${getColor('line')};
   border-bottom: solid 1px ${getColor('line')};
 `;
+
+const DateText = styled.div``;
 
 export default Day;
