@@ -14,7 +14,6 @@ type Props = {
 
 function CalendarBody({ year, month }: Props) {
   const jobs = useRecoilValue(jobSelector({ year, month }));
-  console.log(jobs);
 
   return (
     <CalendarBodyLayout>
