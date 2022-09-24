@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
+import tw, { styled, css } from 'twin.macro';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
 import RootNav from '/components/navs/RootNav';
-import { getColor } from '/libs/cssLib';
 
 const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (
@@ -18,12 +17,10 @@ interface Props {
   minimalMode: boolean;
 }
 
-const RootDiv = styled.div`
-  background-color: ${getColor('bg')};
-  flex-direction: row;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-`;
-
+const RootDiv = styled.div(({ theme }) => [
+  tw`flex-row w-full h-full absolute`,
+  css`
+    background-color: ${theme.color.bg};
+  `,
+]);
 export default RootLayout;

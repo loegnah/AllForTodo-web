@@ -13,11 +13,15 @@ function GlobalStyle() {
 
 const globalStyles = (theme: Theme) => [
   css`
+    * {
+      border-color: ${theme.color.line};
+      color: ${theme.color.font};
+    }
+
     html,
     body {
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
         Helvetica Neue, sans-serif;
-      color: ${theme.color.font};
     }
 
     div,
