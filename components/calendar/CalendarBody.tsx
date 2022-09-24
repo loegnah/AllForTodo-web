@@ -1,8 +1,7 @@
-import styled from '@emotion/styled';
-import DayHead from './day/DayHead';
-import { getColor } from '/libs/cssLib';
+import tw, { css, styled } from 'twin.macro';
+import DayNameBox from './day/DayNameBox';
 import { range } from 'lodash';
-import Day from './day/Day';
+import DayBox from './day/DayBox';
 import { dayNames } from '/libs/dateLib';
 import { useRecoilValue } from 'recoil';
 import { jobAtoms, jobSelector } from '../../controllers/jobManager';
@@ -17,39 +16,35 @@ function CalendarBody({ year, month }: Props) {
 
   return (
     <CalendarBodyLayout>
-      <DayHeadSection>
+      <DayNameSection>
         {dayNames.map((dayName, key) => (
-          <DayHead dayName={dayName} key={key} />
+          <DayNameBox dayName={dayName} key={key} />
         ))}
-      </DayHeadSection>
+      </DayNameSection>
       <DaySection>
-        {range(1, 31).map((day) => (
-          <Day day={day} key={day} />
+        {range(1, 31).map((dayNum) => (
+          <DayBox dayNum={dayNum} key={dayNum} />
         ))}
       </DaySection>
     </CalendarBodyLayout>
   );
 }
 
-const CalendarBodyLayout = styled.section`
-  flex: 1;
-`;
+const CalendarBodyLayout = styled.section(tw`flex-1`);
 
-const DayHeadSection = styled.section`
-  height: 22px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  border-bottom: solid 1px ${getColor('line')};
-  font-size: 0.8rem;
-  color: ${getColor('fontLight')};
-`;
+const DayNameSection = styled.section(({ theme }) => [
+  tw`h-5 grid grid-cols-7 border-b text-xs`,
+  css`
+    border-bottom-color: ${theme.color.line};
+    color: ${theme.color.fontLight};
+  `,
+]);
 
-const DaySection = styled.section`
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  font-size: 0.9rem;
-  color: ${getColor('font')};
-`;
+const DaySection = styled.section(({ theme }) => [
+  tw`flex-1 grid grid-cols-7 text-sm`,
+  css`
+    color: ${theme.color.font};
+  `,
+]);
 
 export default CalendarBody;

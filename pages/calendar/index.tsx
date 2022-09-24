@@ -1,20 +1,16 @@
-import styled from '@emotion/styled';
 import CalendarHeader from '/components/calendar/CalendarHeader';
 import CalendarBody from '/components/calendar/CalendarBody';
-import { getColor } from '/libs/cssLib';
+import tw, { styled } from 'twin.macro';
 
 function Calendar() {
   return (
-    <Wrapper>
+    <CalendarLayout>
       <CalendarHeader />
       <CalendarBody year={2022} month={12} />
-    </Wrapper>
+    </CalendarLayout>
   );
 }
 
-const Wrapper = styled.main`
-  flex: 1;
-  background-color: ${getColor('bg')};
-`;
+const CalendarLayout = styled.main(tw`flex-1`);
 
 export default Calendar;

@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import { styled } from 'twin.macro';
 import JobItem from './JobItem';
 import type { Job } from '../../../controllers/jobManager';
 
@@ -16,6 +16,6 @@ function JobContainer({}: Props) {
   );
 }
 
-const Container = styled.div``;
+const Container = styled.div();
 
 export default JobContainer;
