@@ -5,7 +5,7 @@ import tw, { styled } from 'twin.macro';
 function Calendar() {
   return (
     <CalendarLayout>
-      <CalendarHeader />
+      <CalendarHeader year={2022} month={12} />
       <CalendarBody year={2022} month={12} />
     </CalendarLayout>
   );

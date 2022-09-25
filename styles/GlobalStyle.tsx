@@ -16,6 +16,7 @@ const globalStyles = (theme: Theme) => [
     * {
       border-color: ${theme.color.line};
       color: ${theme.color.font};
+      cursor: default;
     }
 
     html,
