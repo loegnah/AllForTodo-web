@@ -15,10 +15,14 @@ function CalendarHeader({ year, month }: Props) {
           <Image src="/down.svg" alt="me" width="16" height="16" />
         </MonthBox>
         <IconBox>
-          <Image src="/left.svg" alt="me" width="20" height="20" />
+          <Image src="/left.svg" alt="me" width="22" height="22" />
         </IconBox>
         <IconBox>
-          <Image src="/right.svg" alt="me" width="20" height="20" />
+          <Image src="/right.svg" alt="me" width="22" height="22" />
+        </IconBox>
+        <TodayBox>오늘</TodayBox>
+        <IconBox>
+          <Image src="/plus.svg" alt="me" width="22" height="22" />
         </IconBox>
       </LeftBox>
       <RightBox></RightBox>
@@ -29,15 +33,18 @@ function CalendarHeader({ year, month }: Props) {
 const CalendarHeaderLayout = styled.header(tw`h-16 py-4 px-4 flex flex-row justify-between items-center`);
 
 const LeftBox = styled.div(tw`h-full flex flex-row space-x-4 items-center`);
+
 const MonthBox = styled.div(
-  tw`flex flex-row pl-2 py-0.5 rounded-md text-lg font-semibold ease-out duration-100`,
-  tw`hover:ring-2 hover:ring-slate-200 hover:bg-slate-50`
+  tw`flex flex-row pl-2 pr-1 py-0.5 rounded-md text-lg font-semibold ease-out duration-100`,
+  tw`hover:ring-2 hover:ring-slate-400 hover:bg-sky-100`
 );
 
 const IconBox = styled.div(
-  tw`relative w-6 h-6 flex justify-center items-center rounded-full ring-1 ring-slate-200 ease-out duration-100`,
-  tw`hover:ring-2 hover:ring-slate-300 hover:bg-slate-50`
+  tw`relative w-7 h-7 flex justify-center items-center rounded-full ring-1 ring-slate-200 ease-out duration-100`,
+  tw`hover:ring-2 hover:ring-slate-400 hover:bg-sky-100`
 );
+
+const TodayBox = styled(IconBox)(tw`w-14`);
 
 const CenterBox = styled.div(tw``);
 
