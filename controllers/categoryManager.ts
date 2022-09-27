@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const categoryColor = {
   default: '#cec0c0',
-  categoryA: '#ca8585',
+  categoryA: '#b5d5d0',
   categoryB: '#7dcddc',
 } as const;
 
