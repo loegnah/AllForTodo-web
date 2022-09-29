@@ -1,14 +1,14 @@
 import { atom, selector, selectorFamily } from 'recoil';
 import { makeDate } from '/libs/dateLib';
 
-type Job = {
+type JobData = {
   title: string;
   dates?: Date[];
   comment?: string;
   category?: string;
 };
 
-const jobAtoms = atom<Job[]>({
+const jobAtoms = atom<JobData[]>({
   key: 'jobAtoms',
   default: [
     {
@@ -39,4 +39,4 @@ const jobSelector = selectorFamily({
 });
 
 export { jobAtoms, jobSelector };
-export type { Job };
+export type { JobData };

@@ -9,6 +9,6 @@ function DayNameBox({ dayName }: Props) {
   return <DayNameBoxLayout>{dayName}</DayNameBoxLayout>;
 }
 
-const DayNameBoxLayout = styled.div(tw`pl-1.5 justify-center`);
+const DayNameBoxLayout = styled.div(tw`pl-1.5 justify-center opacity-80`);
 
 export default DayNameBox;
