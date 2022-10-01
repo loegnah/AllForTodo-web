@@ -4,7 +4,7 @@ import { range } from 'lodash';
 import DayBox from './day/DayBox';
 import { dayNames } from '/libs/dateLib';
 import { useRecoilValue } from 'recoil';
-import { jobAtoms, jobSelector } from '../../controllers/jobManager';
+import { jobSelector } from '../../controllers/jobManager';
 
 type Props = {
   year: number;

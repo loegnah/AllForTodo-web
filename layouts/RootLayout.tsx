@@ -1,12 +1,12 @@
 import tw, { styled, css } from 'twin.macro';
 import type { NextPage } from 'next';
 import type { ReactNode } from 'react';
-import RootNav from '/components/navs/RootNav';
+import SideNav from '/components/navs/SideNav';
 
 const RootLayout: NextPage<Props> = ({ children, minimalMode }) => {
   return (
     <RootDiv>
-      {!minimalMode && <RootNav />}
+      {!minimalMode && <SideNav />}
       {children}
     </RootDiv>
   );
