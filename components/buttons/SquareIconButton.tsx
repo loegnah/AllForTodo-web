@@ -39,9 +39,5 @@ const ImageButton = styled.button`
   background-color: transparent;
   width: 80%;
   border: None;
-
-  &:active {
-    background-color: aqua;
-  }
 `;
 export default SquareIconButton;

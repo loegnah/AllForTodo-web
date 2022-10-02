@@ -12,8 +12,8 @@ function SideNav() {
 
   return (
     <SideNavLayout>
-      {sideNavItems.data?.map((name, i) => (
-        <IconSection key={i}>
+      {sideNavItems.data?.map(({ kind, isSelected }, i) => (
+        <IconSection isSelected={isSelected} key={i}>
           <SquareIconButton />
         </IconSection>
       ))}
@@ -22,13 +22,22 @@ function SideNav() {
 }
 
 const SideNavLayout = styled.section(({ theme }) => [
-  tw`w-12 pt-2 items-center border-r`,
+  tw`w-12 pt-2 items-center border-r space-y-2`,
   css`
     background-color: ${theme.color.bgSub};
     border-color: ${theme.color.line};
   `,
 ]);
 
-const IconSection = styled.section(tw`w-full items-center py-2 mb-1 last:mb-0 opacity-80`);
+const IconSection = styled.section<{ isSelected: boolean }>(
+  tw`w-full items-center p-1.5 mb-1 last:mb-0 opacity-80 opacity-50 duration-200 ease-out`,
+  ({ isSelected }) =>
+    isSelected
+      ? tw`opacity-100 shadow-inner shadow-slate-300`
+      : [
+          tw`hover:shadow-2xl hover:bg-slate-200 hover:scale-105 hover:opacity-90`,
+          tw`active:shadow-inner active:scale-95`,
+        ]
+);
 
 export default SideNav;
