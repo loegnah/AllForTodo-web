@@ -1,12 +1,15 @@
 import tw, { styled } from 'twin.macro';
 import JobItem from './JobItem';
 import { jobData } from '/libs/dev/devJobLibs';
+import type { JobData } from '../../../controllers/job/jobCntr';
 
 type Props = {
   dayNum: number;
+  jobs: JobData[];
 };
 
-function DayBox({ dayNum }: Props) {
+function DayBox({ dayNum, jobs }: Props) {
+  if (jobs.length) console.log(dayNum, jobs);
   return (
     <DayBoxLayout>
       <DateText>{dayNum}</DateText>

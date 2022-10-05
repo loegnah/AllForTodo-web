@@ -1,7 +1,8 @@
-import _ from 'lodash';
+import _, { range } from 'lodash';
 import { RecoilValueReadOnly, selectorFamily } from 'recoil';
 import { jobAtoms, JobData } from './jobCntr';
 import type { YearMonth } from '/libs/dateLib';
+import { getLastDate } from '/libs/dateLib';
 
 type JobFilter = {
   jobSelectorKey: string;
@@ -18,7 +19,13 @@ const jobSelectorMap = {
     get:
       ({ year, month }: YearMonth) =>
       ({ get }) => {
-        return get(jobAtoms).filter(matchYearMonth({ year, month }));
+        const jobsByDate: JobData[][] = [...range(getLastDate({ year, month })).map(() => [])];
+        get(jobAtoms)
+          .filter(matchYearMonth({ year, month }))
+          .forEach((job) => {
+            job.dates?.forEach((jobDate) => jobsByDate[jobDate.getDate()].push(job));
+          });
+        return jobsByDate;
       },
   }),
 
@@ -27,14 +34,20 @@ const jobSelectorMap = {
     get:
       ({ year, month }: YearMonth) =>
       ({ get }) => {
-        return get(jobAtoms).filter(matchYearMonth({ year, month }));
+        const jobsByDate: JobData[][] = [...range(getLastDate({ year, month })).map(() => [])];
+        get(jobAtoms)
+          .filter(matchYearMonth({ year, month }))
+          .forEach((job) => {
+            job.dates?.forEach((jobDate) => jobsByDate[jobDate.getDate()].push(job));
+          });
+        return jobsByDate;
       },
   }),
 };
 
 const getJobSelectorByFilter = ({
   jobSelectorKey,
-}: JobFilter): ((param: YearMonth) => RecoilValueReadOnly<JobData[]>) =>
+}: JobFilter): ((param: YearMonth) => RecoilValueReadOnly<JobData[][]>) =>
   _.get(jobSelectorMap, jobSelectorKey, jobSelectorMap['selector1']);
 
 export { getJobSelectorByFilter };
