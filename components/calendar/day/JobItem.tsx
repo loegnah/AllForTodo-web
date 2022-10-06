@@ -1,16 +1,16 @@
 import tw, { css, styled } from 'twin.macro';
-import type { JobData } from '../../../controllers/job/jobCntr';
-import { getCategoryColor } from '../../../controllers/categoryManager';
+import type { JobData } from '/controllers/job/jobCntr';
+import { getCategoryColor } from '/controllers/categoryManager';
 
 type JobItemProps = {
-  job: JobData;
+  jobData: JobData;
   isMultiDayJob?: boolean;
 };
 
-function JobItem({ job, isMultiDayJob }: JobItemProps) {
+function JobItem({ jobData, isMultiDayJob }: JobItemProps) {
   return (
-    <Item color={getCategoryColor(job.category as any)} isMultiDayJob={!!isMultiDayJob}>
-      {job.title}
+    <Item color={getCategoryColor(jobData.category as any)} isMultiDayJob={!!isMultiDayJob}>
+      {jobData.title}
     </Item>
   );
 }
