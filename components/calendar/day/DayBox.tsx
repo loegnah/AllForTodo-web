@@ -1,17 +1,21 @@
 import tw, { styled } from 'twin.macro';
 import JobItem from './JobItem';
-import { jobData } from '/libs/dev/devJobLibs';
+import type { JobData } from '/controllers/job/jobCntr';
 
 type Props = {
   dayNum: number;
+  jobDatas: JobData[];
 };
 
-function DayBox({ dayNum }: Props) {
+function DayBox({ dayNum, jobDatas }: Props) {
+  if (jobDatas.length) console.log(dayNum, jobDatas);
   return (
     <DayBoxLayout>
       <DateText>{dayNum}</DateText>
       <JobContainer>
-        <JobItem job={jobData[0]} isMultiDayJob={dayNum === 4} />
+        {jobDatas.map((jobData, key) => (
+          <JobItem jobData={jobData} key={key} />
+        ))}
       </JobContainer>
     </DayBoxLayout>
   );

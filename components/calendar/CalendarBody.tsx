@@ -2,17 +2,19 @@ import tw, { css, styled } from 'twin.macro';
 import DayNameBox from './day/DayNameBox';
 import { range } from 'lodash';
 import DayBox from './day/DayBox';
-import { dayNames } from '/libs/dateLib';
+import { dayNames, getLastDate } from '/libs/dateLib';
 import { useRecoilValue } from 'recoil';
-import { jobSelector } from '../../controllers/jobManager';
+import { getJobSelectorByFilter } from '/controllers/job/jobFilterMgr';
+import type { JobFilter } from '/controllers/job/jobFilterMgr';
 
 type Props = {
   year: number;
   month: number;
+  jobFilter: JobFilter;
 };
 
-function CalendarBody({ year, month }: Props) {
-  const jobs = useRecoilValue(jobSelector({ year, month }));
+function CalendarBody({ year, month, jobFilter }: Props) {
+  const jobsInMonth = useRecoilValue(getJobSelectorByFilter(jobFilter)({ year, month }));
 
   return (
     <CalendarBodyLayout>
@@ -22,8 +24,8 @@ function CalendarBody({ year, month }: Props) {
         ))}
       </DayNameSection>
       <DaySection>
-        {range(1, 31).map((dayNum) => (
-          <DayBox dayNum={dayNum} key={dayNum} />
+        {range(1, getLastDate({ year, month }) + 1).map((dayNum) => (
+          <DayBox dayNum={dayNum} key={dayNum} jobDatas={jobsInMonth[dayNum - 1]} />
         ))}
       </DaySection>
     </CalendarBodyLayout>
