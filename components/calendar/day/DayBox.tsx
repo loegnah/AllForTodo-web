@@ -1,6 +1,6 @@
 import tw, { styled } from 'twin.macro';
 import JobItem from './JobItem';
-import type { JobData } from '/controllers/job/jobCntr';
+import type { JobData } from '/structures/Job';
 
 type Props = {
   dayNum: number;

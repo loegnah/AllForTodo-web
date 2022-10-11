@@ -1,5 +1,5 @@
 import tw, { css, styled } from 'twin.macro';
-import type { JobData } from '/controllers/job/jobCntr';
+import type { JobData } from '/structures/Job';
 import { getCategoryColor } from '/controllers/categoryManager';
 
 type JobItemProps = {

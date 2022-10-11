@@ -23,7 +23,8 @@
       "/public/*": ["public/*"],
       "/libs/*": ["libs/*"],
       "/controllers/*": ["controllers/*"],
-      "/constants/*": ["constants/*"]
+      "/constants/*": ["constants/*"],
+      "/structures/*": ["structures/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

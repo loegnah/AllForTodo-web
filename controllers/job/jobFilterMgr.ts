@@ -1,6 +1,7 @@
 import _, { range } from 'lodash';
-import { RecoilValueReadOnly, selectorFamily } from 'recoil';
-import { jobAtoms, JobData } from './jobCntr';
+import { GetRecoilValue, RecoilValueReadOnly, selectorFamily } from 'recoil';
+import { jobAtoms } from './jobCntr';
+import type { JobData } from '/structures/Job';
 import type { YearMonth } from '/libs/dateLib';
 import { getLastDate } from '/libs/dateLib';
 
@@ -8,47 +9,47 @@ type JobFilter = {
   jobSelectorKey: string;
 };
 
-const matchYearMonth =
-  ({ year, month }: YearMonth) =>
-  ({ dates }: JobData) =>
-    dates && dates.filter((date) => date.getFullYear() === year && date.getMonth() === month - 1).length > 0;
+function checkInDate(start: Date, end: Date) {}
+
+function selectorGetterA({ year, month }: YearMonth) {
+  return ({ get }: { get: GetRecoilValue }) => {
+    const jobsByDate: JobData[][] = [...range(getLastDate({ year, month })).map(() => [])];
+    get(jobAtoms)
+      .filter(matchJobsByYM({ year, month }))
+      .forEach((job) => {
+        job.dates?.forEach((jobDate) => jobsByDate[jobDate.getDate()].push(job));
+      });
+    return jobsByDate;
+  };
+}
+
+function matchJobsByYM({ year, month }: YearMonth) {
+  return ({ dates }: JobData) =>
+    dates &&
+    dates.filter(
+      (jobDate) =>
+        jobDate.start.getFullYear() <= year &&
+        year <= end.getFullYear() &&
+        jobDate.start.getMonth() <= month - 1 &&
+        month - 1 <= end.getMonth()
+    ).length > 0;
+}
 
 const jobSelectorMap = {
   selector1: selectorFamily({
     key: 'selector1',
-    get:
-      ({ year, month }: YearMonth) =>
-      ({ get }) => {
-        const jobsByDate: JobData[][] = [...range(getLastDate({ year, month })).map(() => [])];
-        get(jobAtoms)
-          .filter(matchYearMonth({ year, month }))
-          .forEach((job) => {
-            job.dates?.forEach((jobDate) => jobsByDate[jobDate.getDate()].push(job));
-          });
-        return jobsByDate;
-      },
+    get: selectorGetterA,
   }),
 
   selector2: selectorFamily({
     key: 'selector2',
-    get:
-      ({ year, month }: YearMonth) =>
-      ({ get }) => {
-        const jobsByDate: JobData[][] = [...range(getLastDate({ year, month })).map(() => [])];
-        get(jobAtoms)
-          .filter(matchYearMonth({ year, month }))
-          .forEach((job) => {
-            job.dates?.forEach((jobDate) => jobsByDate[jobDate.getDate()].push(job));
-          });
-        return jobsByDate;
-      },
+    get: selectorGetterA,
   }),
 };
 
-const getJobSelectorByFilter = ({
-  jobSelectorKey,
-}: JobFilter): ((param: YearMonth) => RecoilValueReadOnly<JobData[][]>) =>
-  _.get(jobSelectorMap, jobSelectorKey, jobSelectorMap['selector1']);
+function getJobSelectorByFilter({ jobSelectorKey }: JobFilter): (param: YearMonth) => RecoilValueReadOnly<JobData[][]> {
+  return _.get(jobSelectorMap, jobSelectorKey, jobSelectorMap['selector1']);
+}
 
 export { getJobSelectorByFilter };
 export type { JobFilter };
