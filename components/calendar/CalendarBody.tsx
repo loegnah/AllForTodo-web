@@ -15,7 +15,6 @@ type Props = {
 
 function CalendarBody({ year, month, jobFilter }: Props) {
   const jobsInMonth = useRecoilValue(getJobSelectorByFilter(jobFilter)({ year, month }));
-  console.log(jobsInMonth);
 
   return (
     <CalendarBodyLayout>
@@ -26,7 +25,7 @@ function CalendarBody({ year, month, jobFilter }: Props) {
       </DayNameSection>
       <DaySection>
         {range(1, getLastDay({ year, month }) + 1).map((dayNum) => (
-          <DayBox dayNum={dayNum} key={dayNum} jobDatas={jobsInMonth[dayNum - 1]} />
+          <DayBox dayNum={dayNum} key={dayNum} jobDatas={jobsInMonth[dayNum]} />
         ))}
       </DaySection>
     </CalendarBodyLayout>

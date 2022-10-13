@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { GetRecoilValue, RecoilValueReadOnly, selectorFamily } from 'recoil';
 import { jobAtoms } from './jobCntr';
 import type { YearMonth } from '/libs/dateLib';
-import { getLastDay } from '/libs/dateLib';
+import { getLastDay, makeDate } from '/libs/dateLib';
 import type Job from '/structures/Job';
 
 type JobFilter = {
@@ -13,9 +13,9 @@ function checkInDate(start: Date, end: Date) {}
 
 function selectorGetterA({ year, month }: YearMonth) {
   return ({ get }: { get: GetRecoilValue }) => {
-    const jobsByDate: Job[][] = [..._.range(getLastDay({ year, month })).map(() => [])];
-    const firstDateInMonth = new Date(year, month, 1);
-    const lastDateInMonth = new Date(year, month, getLastDay({ year, month }));
+    const jobsByDate: Job[][] = _.range(getLastDay({ year, month }) + 1).map(() => []);
+    const firstDateInMonth = makeDate(year, month, 1);
+    const lastDateInMonth = makeDate(year, month, getLastDay({ year, month }));
     get(jobAtoms)
       .filter(matchJobsByYM({ year, month }))
       .forEach((job) => {
@@ -33,7 +33,7 @@ function matchJobsByYM({ year, month }: YearMonth) {
   const lastDay = getLastDay({ year, month });
   return ({ dates }: Job) =>
     dates &&
-    dates.filter(({ start, end }) => start <= new Date(year, month, lastDay) && end >= new Date(year, month, 1))
+    dates.filter(({ start, end }) => start <= makeDate(year, month, lastDay) && end >= makeDate(year, month, 1))
       .length > 0;
 }
 

@@ -8,7 +8,6 @@ type Props = {
 };
 
 function DayBox({ dayNum, jobDatas }: Props) {
-  if (jobDatas.length) console.log(dayNum, jobDatas);
   return (
     <DayBoxLayout>
       <DateText>{dayNum}</DateText>

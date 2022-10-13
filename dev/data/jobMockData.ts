@@ -12,7 +12,7 @@ const jobMockData = [
     title: 'Job B',
     comment: 'Job B comment',
     category: 'categoryB',
-    dates: [{ start: makeDate(2022, 12, 12), end: makeDate(2022, 12, 15) }],
+    dates: [{ start: makeDate(2022, 11, 28), end: makeDate(2022, 12, 4) }],
   }),
   new Job({
     title: 'Job C',

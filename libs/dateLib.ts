@@ -8,7 +8,9 @@ function makeDate(year: number, month: number, day: number) {
   return new Date(year, month - 1, day);
 }
 
-const getLastDay = ({ year, month }: { year: number; month: number }) => new Date(year, month, 0).getDate();
+function getLastDay({ year, month }: { year: number; month: number }) {
+  return new Date(year, month, 0).getDate();
+}
 
 export type { YearMonth, DayName };
 export { dayNames, makeDate, getLastDay };
