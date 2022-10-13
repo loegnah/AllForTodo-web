@@ -1,9 +1,9 @@
 import tw, { css, styled } from 'twin.macro';
-import type { JobData } from '/controllers/job/jobCntr';
 import { getCategoryColor } from '/controllers/categoryManager';
+import type Job from '/structures/Job';
 
 type JobItemProps = {
-  jobData: JobData;
+  jobData: Job;
   isMultiDayJob?: boolean;
 };
 
