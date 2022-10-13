@@ -1,10 +1,10 @@
 import tw, { styled } from 'twin.macro';
 import JobItem from './JobItem';
-import type { JobData } from '/structures/Job';
+import type Job from '/structures/Job';
 
 type Props = {
   dayNum: number;
-  jobDatas: JobData[];
+  jobDatas: Job[];
 };
 
 function DayBox({ dayNum, jobDatas }: Props) {

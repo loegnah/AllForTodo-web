@@ -1,9 +1,9 @@
-import _, { range } from 'lodash';
+import _ from 'lodash';
 import { GetRecoilValue, RecoilValueReadOnly, selectorFamily } from 'recoil';
 import { jobAtoms } from './jobCntr';
-import type { JobData } from '/structures/Job';
 import type { YearMonth } from '/libs/dateLib';
-import { getLastDate } from '/libs/dateLib';
+import { getLastDay } from '/libs/dateLib';
+import type Job from '/structures/Job';
 
 type JobFilter = {
   jobSelectorKey: string;
@@ -13,26 +13,28 @@ function checkInDate(start: Date, end: Date) {}
 
 function selectorGetterA({ year, month }: YearMonth) {
   return ({ get }: { get: GetRecoilValue }) => {
-    const jobsByDate: JobData[][] = [...range(getLastDate({ year, month })).map(() => [])];
+    const jobsByDate: Job[][] = [..._.range(getLastDay({ year, month })).map(() => [])];
+    const firstDateInMonth = new Date(year, month, 1);
+    const lastDateInMonth = new Date(year, month, getLastDay({ year, month }));
     get(jobAtoms)
       .filter(matchJobsByYM({ year, month }))
       .forEach((job) => {
-        job.dates?.forEach((jobDate) => jobsByDate[jobDate.getDate()].push(job));
+        job.dates?.forEach(({ start, end }) => {
+          const startDay = (start < firstDateInMonth ? firstDateInMonth : start).getDate();
+          const endDay = (lastDateInMonth < end ? lastDateInMonth : end).getDate();
+          _.range(startDay, endDay + 1).forEach((curDay) => jobsByDate[curDay].push(job));
+        });
       });
     return jobsByDate;
   };
 }
 
 function matchJobsByYM({ year, month }: YearMonth) {
-  return ({ dates }: JobData) =>
+  const lastDay = getLastDay({ year, month });
+  return ({ dates }: Job) =>
     dates &&
-    dates.filter(
-      (jobDate) =>
-        jobDate.start.getFullYear() <= year &&
-        year <= end.getFullYear() &&
-        jobDate.start.getMonth() <= month - 1 &&
-        month - 1 <= end.getMonth()
-    ).length > 0;
+    dates.filter(({ start, end }) => start <= new Date(year, month, lastDay) && end >= new Date(year, month, 1))
+      .length > 0;
 }
 
 const jobSelectorMap = {
@@ -47,7 +49,7 @@ const jobSelectorMap = {
   }),
 };
 
-function getJobSelectorByFilter({ jobSelectorKey }: JobFilter): (param: YearMonth) => RecoilValueReadOnly<JobData[][]> {
+function getJobSelectorByFilter({ jobSelectorKey }: JobFilter): (param: YearMonth) => RecoilValueReadOnly<Job[][]> {
   return _.get(jobSelectorMap, jobSelectorKey, jobSelectorMap['selector1']);
 }
 
